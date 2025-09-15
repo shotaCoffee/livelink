@@ -45,8 +45,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/ui
       '@solidjs/router':
-        specifier: ^0.10.5
-        version: 0.10.10(solid-js@1.9.9)
+        specifier: ^0.15.3
+        version: 0.15.3(solid-js@1.9.9)
       solid-js:
         specifier: ^1.8.11
         version: 1.9.9
@@ -124,7 +124,7 @@ importers:
         version: link:../shared
       '@solidjs/testing-library':
         specifier: ^0.8.5
-        version: 0.8.10(@solidjs/router@0.10.10(solid-js@1.9.9))(solid-js@1.9.9)
+        version: 0.8.10(@solidjs/router@0.15.3(solid-js@1.9.9))(solid-js@1.9.9)
       '@storybook/addon-essentials':
         specifier: ^7.6.6
         version: 7.6.20(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -173,21 +173,6 @@ importers:
       vitest:
         specifier: ^1.1.0
         version: 1.6.1(@types/node@20.19.14)(jsdom@23.2.0)
-
-  supabase:
-    devDependencies:
-      '@supabase/supabase-js':
-        specifier: ^2.57.4
-        version: 2.57.4
-      '@types/node':
-        specifier: ^20.19.14
-        version: 20.19.14
-      typescript:
-        specifier: ^5.9.2
-        version: 5.9.2
-      vitest:
-        specifier: ^2.1.9
-        version: 2.1.9(@types/node@20.19.14)(jsdom@23.2.0)
 
 packages:
 
@@ -1298,8 +1283,8 @@ packages:
   '@sinclair/typebox@0.27.8':
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
 
-  '@solidjs/router@0.10.10':
-    resolution: {integrity: sha512-nGl7gMgsojuaupI5MAK2cFtkndmWWSAPhill/8La3IjujY3vMBamcQFymBsA2ejzxEYJjkOlEQHYgp2jNFkwuQ==}
+  '@solidjs/router@0.15.3':
+    resolution: {integrity: sha512-iEbW8UKok2Oio7o6Y4VTzLj+KFCmQPGEpm1fS3xixwFBdclFVBvaQVeibl1jys4cujfAK5Kn6+uG2uBm3lxOMw==}
     peerDependencies:
       solid-js: ^1.8.6
 
@@ -5368,16 +5353,16 @@ snapshots:
 
   '@sinclair/typebox@0.27.8': {}
 
-  '@solidjs/router@0.10.10(solid-js@1.9.9)':
+  '@solidjs/router@0.15.3(solid-js@1.9.9)':
     dependencies:
       solid-js: 1.9.9
 
-  '@solidjs/testing-library@0.8.10(@solidjs/router@0.10.10(solid-js@1.9.9))(solid-js@1.9.9)':
+  '@solidjs/testing-library@0.8.10(@solidjs/router@0.15.3(solid-js@1.9.9))(solid-js@1.9.9)':
     dependencies:
       '@testing-library/dom': 10.4.1
       solid-js: 1.9.9
     optionalDependencies:
-      '@solidjs/router': 0.10.10(solid-js@1.9.9)
+      '@solidjs/router': 0.15.3(solid-js@1.9.9)
 
   '@storybook/addon-actions@7.6.20':
     dependencies:
@@ -6243,14 +6228,6 @@ snapshots:
       '@vitest/utils': 2.1.9
       chai: 5.3.3
       tinyrainbow: 1.2.0
-
-  '@vitest/mocker@2.1.9(vite@5.4.20(@types/node@20.19.14))':
-    dependencies:
-      '@vitest/spy': 2.1.9
-      estree-walker: 3.0.3
-      magic-string: 0.30.19
-    optionalDependencies:
-      vite: 5.4.20(@types/node@20.19.14)
 
   '@vitest/mocker@2.1.9(vite@5.4.20(@types/node@24.3.1))':
     dependencies:
@@ -8880,24 +8857,6 @@ snapshots:
       - supports-color
       - terser
 
-  vite-node@2.1.9(@types/node@20.19.14):
-    dependencies:
-      cac: 6.7.14
-      debug: 4.4.1
-      es-module-lexer: 1.7.0
-      pathe: 1.1.2
-      vite: 5.4.20(@types/node@20.19.14)
-    transitivePeerDependencies:
-      - '@types/node'
-      - less
-      - lightningcss
-      - sass
-      - sass-embedded
-      - stylus
-      - sugarss
-      - supports-color
-      - terser
-
   vite-node@2.1.9(@types/node@24.3.1):
     dependencies:
       cac: 6.7.14
@@ -8998,42 +8957,6 @@ snapshots:
     transitivePeerDependencies:
       - less
       - lightningcss
-      - sass
-      - sass-embedded
-      - stylus
-      - sugarss
-      - supports-color
-      - terser
-
-  vitest@2.1.9(@types/node@20.19.14)(jsdom@23.2.0):
-    dependencies:
-      '@vitest/expect': 2.1.9
-      '@vitest/mocker': 2.1.9(vite@5.4.20(@types/node@20.19.14))
-      '@vitest/pretty-format': 2.1.9
-      '@vitest/runner': 2.1.9
-      '@vitest/snapshot': 2.1.9
-      '@vitest/spy': 2.1.9
-      '@vitest/utils': 2.1.9
-      chai: 5.3.3
-      debug: 4.4.1
-      expect-type: 1.2.2
-      magic-string: 0.30.19
-      pathe: 1.1.2
-      std-env: 3.9.0
-      tinybench: 2.9.0
-      tinyexec: 0.3.2
-      tinypool: 1.1.1
-      tinyrainbow: 1.2.0
-      vite: 5.4.20(@types/node@20.19.14)
-      vite-node: 2.1.9(@types/node@20.19.14)
-      why-is-node-running: 2.3.0
-    optionalDependencies:
-      '@types/node': 20.19.14
-      jsdom: 23.2.0
-    transitivePeerDependencies:
-      - less
-      - lightningcss
-      - msw
       - sass
       - sass-embedded
       - stylus
