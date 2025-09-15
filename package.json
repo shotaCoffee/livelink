@@ -1,0 +1,40 @@
+{
+  "name": "liveLink",
+  "version": "1.0.0",
+  "private": true,
+  "description": "バンド向けセットリスト共有アプリ",
+  "scripts": {
+    "dev": "pnpm --parallel --recursive run dev",
+    "build": "pnpm --recursive run build",
+    "lint": "eslint \"**/*.{js,jsx,ts,tsx}\" --ignore-path .eslintignore || true && pnpm --recursive run lint",
+    "lint:fix": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix --ignore-path .eslintignore || true && pnpm --recursive run lint:fix",
+    "type-check": "pnpm --recursive run type-check",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "clean": "pnpm --recursive run clean",
+    "prepare": "husky"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.15.1",
+  "devDependencies": {
+    "@types/node": "^24.3.1",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "typescript": "^5.9.2"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "name": "@band-setlist/ui",
+  "version": "1.0.0",
+  "description": "Shared UI components for LiveLink application",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./styles": "./dist/style.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "type-check": "tsc --noEmit",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "solid-js": "^1.8.11",
+    "clsx": "^2.0.0"
+  },
+  "devDependencies": {
+    "@band-setlist/shared": "workspace:*",
+    "@solidjs/testing-library": "^0.8.5",
+    "@storybook/addon-essentials": "^7.6.6",
+    "@storybook/addon-interactions": "^7.6.6",
+    "@storybook/addon-links": "^7.6.6",
+    "@storybook/blocks": "^7.6.6",
+    "@storybook/html-vite": "^7.6.6",
+    "@storybook/test": "^7.6.6",
+    "@types/node": "^20.10.5",
+    "autoprefixer": "^10.4.16",
+    "jsdom": "^23.0.1",
+    "postcss": "^8.4.32",
+    "solid-js": "^1.8.11",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.10",
+    "vite-plugin-dts": "^3.7.0",
+    "vite-plugin-solid": "^2.8.2",
+    "vitest": "^1.1.0"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.8.0"
+  },
+  "keywords": [
+    "solid-js",
+    "ui-components",
+    "tailwindcss",
+    "typescript",
+    "design-system"
+  ],
+  "author": "LiveLink Team",
+  "license": "MIT"
+}

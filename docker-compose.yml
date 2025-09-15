@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/apps/web/node_modules
+    environment:
+      - VITE_SUPABASE_URL=${VITE_SUPABASE_URL:-http://localhost:54321}
+      - VITE_SUPABASE_ANON_KEY=${VITE_SUPABASE_ANON_KEY}
+    working_dir: /app
+    command: sh -c "pnpm install && pnpm --filter @livelink/web dev --host 0.0.0.0"
+    depends_on:
+      - supabase
+
+  supabase:
+    image: supabase/cli:latest
+    command: supabase start --workdir /app/supabase
+    volumes:
+      - ./supabase:/app/supabase
+    ports:
+      - '54321:54321' # API
+      - '54323:54323' # Dashboard
+      - '54324:54324' # DB
+      - '54325:54325' # Studio
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-your-super-secret-and-long-postgres-password}

@@ -1,0 +1,27 @@
+{
+  "name": "@band-setlist/shared",
+  "version": "1.0.0",
+  "description": "Shared types and utilities for LiveLink",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./types": "./src/types/index.ts",
+    "./utils": "./src/utils/index.ts"
+  },
+  "scripts": {
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:coverage": "vitest --coverage",
+    "type-check": "tsc --noEmit",
+    "lint": "echo 'lint not configured for shared package'",
+    "lint:fix": "echo 'lint:fix not configured for shared package'",
+    "clean": "rm -rf dist coverage"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.1",
+    "typescript": "^5.9.2",
+    "vitest": "^2.0.0",
+    "@vitest/coverage-v8": "^2.0.0"
+  }
+}

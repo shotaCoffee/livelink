@@ -1,5 +1,6 @@
 .idea
 .settings.json
+apps/web/.vite/deps
 
 .env
 .env.example

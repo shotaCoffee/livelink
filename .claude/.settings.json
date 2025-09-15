@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(chmod:*)",
+      "Bash(pnpm install:*)",
+      "Bash(pnpm format:*)",
+      "Bash(pnpm lint:*)",
+      "Bash(pnpm list:*)",
+      "Bash(pnpm test:*)",
+      "Bash(pnpm --filter @band-setlist/shared test)",
+      "Bash(pnpm --filter @band-setlist/shared test --run)",
+      "Bash(pnpm --filter @band-setlist/shared type-check)",
+      "Bash(pnpm --filter @band-setlist/supabase-client install)",
+      "Bash(pnpm --filter @band-setlist/supabase-client test --run)",
+      "Bash(pnpm --filter @band-setlist/supabase-client test tests/client.test.ts --run)",
+      "Bash(pnpm --filter @band-setlist/supabase-client test tests/auth.test.ts --run)",
+      "Bash(pnpm --filter @band-setlist/supabase-client test tests/songs.test.ts --run)",
+      "Bash(pnpm type-check:*)",
+      "Bash(pnpm build:*)",
+      "Bash(say \"Phase 1.3 packages/ui implementation completed successfully. Created comprehensive UI component library with SolidJS and TailwindCSS. Includes 15 reusable components: Button, Input, Card, Modal for base UI; FormGroup, SongForm, LiveForm for forms; Header, Sidebar, Layout, AppLayout, PageHeader, Container for layouts. Package builds successfully with TypeScript support and proper exports. Ready for Phase 2 SolidJS app implementation.\")",
+      "Bash(pnpm --filter @livelink/web type-check)",
+      "Bash(say:*)",
+      "Bash(pnpm --filter @livelink/web build)",
+      "Bash(pnpm --filter @livelink/web dev)",
+      "Bash(npm install:*)",
+      "Bash(docker:*)",
+      "Bash(supabase init:*)",
+      "Bash(supabase start:*)",
+      "Bash(open:*)",
+      "Bash(supabase db:*)",
+      "Bash(psql:*)",
+      "Bash(node:*)",
+      "Bash(pnpm --filter @band-setlist/ui build)",
+      "Bash(pnpm --filter @band-setlist/shared build)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

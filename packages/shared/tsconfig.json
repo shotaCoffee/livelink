@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "strict": true,
+    "noEmit": true,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "types": ["vitest/globals"]
+  },
+  "include": [
+    "src/**/*",
+    "tests/**/*",
+    "**/*.test.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "@band-setlist/supabase-client",
+  "version": "1.0.0",
+  "description": "Supabase client and database operations for LiveLink",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:coverage": "vitest --coverage",
+    "type-check": "tsc --noEmit",
+    "lint": "echo 'lint not configured for supabase-client package'",
+    "lint:fix": "echo 'lint:fix not configured for supabase-client package'",
+    "clean": "rm -rf dist coverage"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.0",
+    "@band-setlist/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.1",
+    "typescript": "^5.9.2",
+    "vitest": "^2.0.0",
+    "@vitest/coverage-v8": "^2.0.0"
+  }
+}
