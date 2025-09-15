@@ -37,7 +37,7 @@
     "@storybook/addon-interactions": "^7.6.6",
     "@storybook/addon-links": "^7.6.6",
     "@storybook/blocks": "^7.6.6",
-    "@storybook/html-vite": "^7.6.6",
+    "@storybook/html-vite": "^9.1.6",
     "@storybook/test": "^7.6.6",
     "@types/node": "^20.10.5",
     "autoprefixer": "^10.4.16",
