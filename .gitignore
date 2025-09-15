@@ -1,0 +1,22 @@
+.idea
+
+.env
+.env.example
+
+*.log
+/debug.log
+
+build/
+dist/**
+packages/ui/dist/**
+apps/web/dist/**
+
+node_modules/
+*.map
+
+*~
+*.swp
+.DS_Store # macOS specific
+
+# Negate a previously ignored pattern (e.g., ignore all .log files except important.log)
+!important.log
