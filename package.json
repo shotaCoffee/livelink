@@ -8,6 +8,7 @@
     "build": "pnpm build:packages && pnpm build:apps",
     "build:packages": "pnpm --filter \"@band-setlist/shared\" build && pnpm --filter \"@band-setlist/supabase-client\" build && pnpm --filter \"@band-setlist/ui\" build",
     "build:apps": "pnpm --filter \"@livelink/web\" build",
+    "build:vercel": "pnpm install --frozen-lockfile && pnpm build",
     "lint": "eslint \"**/*.{js,jsx,ts,tsx}\" --ignore-path .eslintignore || true && pnpm --recursive run lint",
     "lint:fix": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix --ignore-path .eslintignore || true && pnpm --recursive run lint:fix",
     "type-check": "pnpm --recursive run type-check",

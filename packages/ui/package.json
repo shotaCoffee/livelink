@@ -11,7 +11,8 @@
     ".": {
       "import": "./dist/index.js",
       "require": "./dist/index.js",
-      "default": "./dist/index.js"
+      "default": "./dist/index.js",
+      "development": "./src/index.ts"
     },
     "./styles.css": "./dist/styles.css"
   },
