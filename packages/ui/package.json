@@ -35,7 +35,7 @@
     "@solidjs/testing-library": "^0.8.5",
     "@storybook/addon-essentials": "^7.6.6",
     "@storybook/addon-interactions": "^7.6.6",
-    "@storybook/addon-links": "^7.6.6",
+    "@storybook/addon-links": "^9.1.6",
     "@storybook/blocks": "^7.6.6",
     "@storybook/html-vite": "^7.6.6",
     "@storybook/test": "^7.6.6",
