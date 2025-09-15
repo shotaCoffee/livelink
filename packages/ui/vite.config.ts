@@ -27,12 +27,12 @@ export default defineConfig({
           'solid-js/web': 'SolidJSWeb',
           'solid-js/store': 'SolidJSStore'
         },
-        assetFileNames: (assetInfo) => {
-          if (assetInfo.name === 'style.css') return 'styles.css';
-          return assetInfo.name;
-        }
+        assetFileNames: 'styles.css',
+        preserveModules: false
       }
     },
+    outDir: 'dist',
+    emptyOutDir: true,
     sourcemap: true,
     minify: false
   },
