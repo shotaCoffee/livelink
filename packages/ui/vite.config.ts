@@ -16,8 +16,8 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'BandSetlistUI',
-      formats: ['es', 'cjs'], // ESモジュールとCommonJSの両方をサポート
-      fileName: (format) => `index.${format === 'es' ? 'js' : 'cjs'}`
+      formats: ['es'],
+      fileName: 'index'
     },
     rollupOptions: {
       external: ['solid-js', 'solid-js/web', 'solid-js/store'],
@@ -27,8 +27,7 @@ export default defineConfig({
           'solid-js/web': 'SolidJSWeb',
           'solid-js/store': 'SolidJSStore'
         },
-        assetFileNames: 'styles.css',
-        preserveModules: false
+        assetFileNames: 'styles.css'
       }
     },
     outDir: 'dist',

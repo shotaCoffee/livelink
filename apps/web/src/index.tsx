@@ -1,6 +1,9 @@
 /* @refresh reload */
 import { render } from 'solid-js/web'
-import '@band-setlist/ui' // UIパッケージ全体をインポートすることで、内部のスタイルも自動的に適用されます
+// スタイルをインポートする前に、パッケージを明示的にインポート
+import '@band-setlist/ui'
+// UIパッケージのスタイルを明示的にインポート
+import '@band-setlist/ui/styles.css'
 import './index.css'
 import App from './App'
 
