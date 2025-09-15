@@ -53,6 +53,13 @@ expect.extend({
 
 declare global {
   namespace Vi {
+    interface Assertion<T = any> {
+      toBeInTheDocument(): T
+      toHaveTextContent(text: string): T
+      toHaveClass(...classes: string[]): T
+      toBeDisabled(): T
+    }
+
     interface AsymmetricMatchersContaining {
       toBeInTheDocument(): any
       toHaveTextContent(text: string): any

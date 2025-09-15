@@ -3,7 +3,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- Create bands table
 CREATE TABLE bands (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT extensions.uuid_generate_v4(),
     user_id UUID NOT NULL,
     name VARCHAR(255) NOT NULL,
     description TEXT,
@@ -14,7 +14,7 @@ CREATE TABLE bands (
 
 -- Create songs table
 CREATE TABLE songs (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT extensions.uuid_generate_v4(),
     band_id UUID NOT NULL REFERENCES bands(id) ON DELETE CASCADE,
     title VARCHAR(255) NOT NULL,
     artist VARCHAR(255) NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE songs (
 
 -- Create lives table
 CREATE TABLE lives (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT extensions.uuid_generate_v4(),
     band_id UUID NOT NULL REFERENCES bands(id) ON DELETE CASCADE,
     name VARCHAR(255) NOT NULL,
     date DATE NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE lives (
 
 -- Create setlist_items table
 CREATE TABLE setlist_items (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT extensions.uuid_generate_v4(),
     live_id UUID NOT NULL REFERENCES lives(id) ON DELETE CASCADE,
     song_id UUID NOT NULL REFERENCES songs(id) ON DELETE CASCADE,
     order_index INTEGER NOT NULL,

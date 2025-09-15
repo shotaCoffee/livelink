@@ -1,4 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
+import type { Session, User } from '@supabase/supabase-js'
+import type { MockedSupabaseClient } from '../vitest-env'
 
 // Supabaseクライアントのモック
 vi.mock('../src/client', () => ({
@@ -17,7 +19,9 @@ vi.mock('../src/client', () => ({
 import { auth } from '../src/auth'
 import { supabase } from '../src/client'
 
-const mockSupabaseClient = vi.mocked(supabase)
+const mockSupabaseClient = vi.mocked(
+  supabase
+) as unknown as MockedSupabaseClient
 
 describe('Authentication Functions', () => {
   beforeEach(() => {
@@ -27,7 +31,17 @@ describe('Authentication Functions', () => {
   describe('auth.signUp', () => {
     it('should call supabase.auth.signUp with correct parameters', async () => {
       mockSupabaseClient.auth.signUp.mockResolvedValue({
-        data: { user: { id: '123', email: 'test@example.com' } },
+        data: {
+          user: {
+            id: '123',
+            email: 'test@example.com',
+            app_metadata: {},
+            user_metadata: {},
+            aud: 'authenticated',
+            created_at: '2024-01-01T00:00:00.000Z',
+          } as User,
+          session: null,
+        },
         error: null,
       })
 
@@ -43,8 +57,14 @@ describe('Authentication Functions', () => {
 
     it('should handle sign up errors', async () => {
       mockSupabaseClient.auth.signUp.mockResolvedValue({
-        data: { user: null },
-        error: { message: 'Email already registered' },
+        data: { user: null, session: null },
+        error: {
+          message: 'Email already registered',
+          code: 'signup_disabled',
+          status: 400,
+          __isAuthError: true,
+          name: 'AuthError',
+        } as any,
       })
 
       const result = await auth.signUp('existing@example.com', 'password123')
@@ -57,7 +77,16 @@ describe('Authentication Functions', () => {
   describe('auth.signIn', () => {
     it('should call supabase.auth.signInWithPassword with correct parameters', async () => {
       mockSupabaseClient.auth.signInWithPassword.mockResolvedValue({
-        data: { user: { id: '123', email: 'test@example.com' } },
+        data: {
+          user: {
+            id: '123',
+            email: 'test@example.com',
+            app_metadata: {},
+            user_metadata: {},
+            aud: 'authenticated',
+            created_at: '2024-01-01T00:00:00.000Z',
+          } as User,
+        },
         error: null,
       })
 
@@ -95,7 +124,10 @@ describe('Authentication Functions', () => {
 
   describe('auth.getSession', () => {
     it('should call supabase.auth.getSession', async () => {
-      const mockSession = { access_token: 'token123', user: { id: '123' } }
+      const mockSession: Partial<Session> = {
+        access_token: 'token123',
+        user: { id: '123' } as User,
+      }
       mockSupabaseClient.auth.getSession.mockResolvedValue({
         data: { session: mockSession },
         error: null,
@@ -110,7 +142,7 @@ describe('Authentication Functions', () => {
 
   describe('auth.getUser', () => {
     it('should call supabase.auth.getUser', async () => {
-      const mockUser = { id: '123', email: 'test@example.com' }
+      const mockUser: Partial<User> = { id: '123', email: 'test@example.com' }
       mockSupabaseClient.auth.getUser.mockResolvedValue({
         data: { user: mockUser },
         error: null,

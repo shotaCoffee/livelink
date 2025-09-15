@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import type { Live, LiveFormData, ApiResponse } from '@band-setlist/shared'
+import type { MockedSupabaseClient } from '../vitest-env'
 import { liveQueries } from '../src/queries/lives'
 
 // Supabaseクライアントのモック
@@ -19,7 +20,9 @@ vi.mock('../src/client', () => ({
 }))
 
 import { supabase } from '../src/client'
-const mockSupabaseClient = vi.mocked(supabase)
+const mockSupabaseClient = vi.mocked(
+  supabase
+) as unknown as MockedSupabaseClient
 
 describe('Live Queries', () => {
   beforeEach(() => {

@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import type { SetlistItem, ApiResponse } from '@band-setlist/shared'
+import type { MockedSupabaseClient } from '../vitest-env'
 import { setlistQueries } from '../src/queries/setlists'
 
 // Supabaseクライアントのモック
@@ -19,7 +20,9 @@ vi.mock('../src/client', () => ({
 }))
 
 import { supabase } from '../src/client'
-const mockSupabaseClient = vi.mocked(supabase)
+const mockSupabaseClient = vi.mocked(
+  supabase
+) as unknown as MockedSupabaseClient
 
 describe('Setlist Queries', () => {
   beforeEach(() => {
