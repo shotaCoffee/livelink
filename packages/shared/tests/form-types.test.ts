@@ -48,7 +48,7 @@ describe('Form Types', () => {
   describe('LiveFormData', () => {
     it('should have required fields for live event creation', () => {
       expectTypeOf<LiveFormData>().toMatchTypeOf<{
-        name: string
+        title: string
         date: string
         venue: string
       }>()
@@ -63,14 +63,14 @@ describe('Form Types', () => {
 
     it('should accept valid live event form data', () => {
       const validFormData: LiveFormData = {
-        name: 'Summer Live 2024',
+        title: 'Summer Live 2024',
         date: '2024-07-15',
         venue: 'Tokyo Dome',
         ticket_url: 'https://tickets.example.com/summer-live-2024',
         is_upcoming: true,
       }
 
-      expect(validFormData.name).toBe('Summer Live 2024')
+      expect(validFormData.title).toBe('Summer Live 2024')
       expect(validFormData.venue).toBe('Tokyo Dome')
     })
   })

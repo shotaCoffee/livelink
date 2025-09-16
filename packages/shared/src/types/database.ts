@@ -53,8 +53,8 @@ export interface Live {
   id: string
   /** ID of the band performing at this live event */
   band_id: string
-  /** Name of the live event */
-  name: string
+  /** Title of the live event */
+  title: string
   /** Date of the live event (ISO string) */
   date: string
   /** Venue name where the live event takes place */

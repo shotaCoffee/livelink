@@ -13,7 +13,7 @@ export interface LiveFormProps {
 
 export function LiveForm(props: LiveFormProps) {
   const [formData, setFormData] = createSignal<LiveFormData>({
-    name: props.initialData?.name || '',
+    title: props.initialData?.title || '',
     date: props.initialData?.date || '',
     venue: props.initialData?.venue || '',
     ticket_url: props.initialData?.ticket_url || '',
@@ -28,8 +28,8 @@ export function LiveForm(props: LiveFormProps) {
     const data = formData()
     const newErrors: Partial<Record<keyof LiveFormData, string>> = {}
 
-    if (!data.name.trim()) {
-      newErrors.name = 'ライブ名は必須です'
+    if (!data.title.trim()) {
+      newErrors.title = 'ライブタイトルは必須です'
     }
 
     if (!data.date.trim()) {
@@ -92,13 +92,13 @@ export function LiveForm(props: LiveFormProps) {
 
   return (
     <form onSubmit={handleSubmit} class="space-y-4">
-      <FormGroup label="ライブ名" required error={errors().name}>
+      <FormGroup label="ライブタイトル" required error={errors().title}>
         <Input
           type="text"
-          value={formData().name}
-          onInput={e => updateField('name', e.currentTarget.value)}
-          placeholder="ライブ名を入力してください"
-          error={!!errors().name}
+          value={formData().title}
+          onInput={e => updateField('title', e.currentTarget.value)}
+          placeholder="ライブタイトルを入力してください"
+          error={!!errors().title}
         />
       </FormGroup>
 
