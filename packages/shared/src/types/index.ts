@@ -30,8 +30,8 @@ export interface SongFormData {
  * Excludes database-managed fields like id, timestamps, band_id
  */
 export interface LiveFormData {
-  /** Name of the live event */
-  name: string
+  /** Title of the live event */
+  title: string
   /** Date of the live event (ISO string or date input format) */
   date: string
   /** Venue name where the live event takes place */

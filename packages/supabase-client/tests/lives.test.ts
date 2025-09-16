@@ -35,7 +35,7 @@ describe('Live Queries', () => {
         {
           id: 'live1',
           band_id: 'band1',
-          name: 'Summer Live 2024',
+          title: 'Summer Live 2024',
           date: '2024-07-15',
           venue: 'Tokyo Dome',
           is_upcoming: true,
@@ -45,7 +45,7 @@ describe('Live Queries', () => {
         {
           id: 'live2',
           band_id: 'band1',
-          name: 'Winter Live 2023',
+          title: 'Winter Live 2023',
           date: '2023-12-25',
           venue: 'Yokohama Arena',
           is_upcoming: false,
@@ -89,7 +89,7 @@ describe('Live Queries', () => {
   describe('liveQueries.create', () => {
     it('should create a new live event with form data', async () => {
       const formData: LiveFormData = {
-        name: 'New Live Event',
+        title: 'New Live Event',
         date: '2024-08-15',
         venue: 'Saitama Super Arena',
         ticket_url: 'https://tickets.example.com/new-live',
@@ -99,7 +99,7 @@ describe('Live Queries', () => {
       const mockCreatedLive: Live = {
         id: 'new-live-id',
         band_id: 'band1',
-        name: 'New Live Event',
+        title: 'New Live Event',
         date: '2024-08-15',
         venue: 'Saitama Super Arena',
         ticket_url: 'https://tickets.example.com/new-live',
@@ -131,7 +131,7 @@ describe('Live Queries', () => {
 
     it('should handle creation errors', async () => {
       const formData: LiveFormData = {
-        name: '',
+        title: '',
         date: '',
         venue: '', // Invalid data
       }
@@ -154,7 +154,7 @@ describe('Live Queries', () => {
   describe('liveQueries.update', () => {
     it('should update an existing live event', async () => {
       const updates: Partial<LiveFormData> = {
-        name: 'Updated Live Event',
+        title: 'Updated Live Event',
         venue: 'Updated Venue',
         ticket_url: 'https://tickets.example.com/updated',
       }
@@ -162,7 +162,7 @@ describe('Live Queries', () => {
       const mockUpdatedLive: Live = {
         id: 'live1',
         band_id: 'band1',
-        name: 'Updated Live Event',
+        title: 'Updated Live Event',
         date: '2024-07-15',
         venue: 'Updated Venue',
         ticket_url: 'https://tickets.example.com/updated',
@@ -229,7 +229,7 @@ describe('Live Queries', () => {
         {
           id: 'live1',
           band_id: 'band1',
-          name: 'Summer Live 2024',
+          title: 'Summer Live 2024',
           date: '2024-07-15',
           venue: 'Tokyo Dome',
           is_upcoming: true,
@@ -264,7 +264,7 @@ describe('Live Queries', () => {
       const mockSharedLive: Live = {
         id: 'live1',
         band_id: 'band1',
-        name: 'Summer Live 2024',
+        title: 'Summer Live 2024',
         date: '2024-07-15',
         venue: 'Tokyo Dome',
         is_upcoming: true,
