@@ -21,7 +21,7 @@ interface LiveFormModalProps {
 
 export function LiveFormModal(props: LiveFormModalProps) {
   const [formData, setFormData] = createSignal<LiveFormData>({
-    title: '',
+    name: '',
     venue: '',
     date: '',
     description: '',
@@ -36,7 +36,7 @@ export function LiveFormModal(props: LiveFormModalProps) {
     const live = props.live
     if (live) {
       setFormData({
-        title: live.title || '',
+        name: live.name || '',
         venue: live.venue || '',
         date: live.date ? live.date.split('T')[0] : '',
         description: live.description || '',
@@ -46,7 +46,7 @@ export function LiveFormModal(props: LiveFormModalProps) {
     } else {
       // Reset form when no live is provided (create mode)
       setFormData({
-        title: '',
+        name: '',
         venue: '',
         date: '',
         description: '',
@@ -65,8 +65,8 @@ export function LiveFormModal(props: LiveFormModalProps) {
     const newErrors: Record<string, string> = {}
 
     // Validation
-    if (!data.title.trim()) {
-      newErrors.title = 'ライブタイトルは必須です'
+    if (!data.name.trim()) {
+      newErrors.name = 'ライブタイトルは必須です'
     }
     if (!data.venue.trim()) {
       newErrors.venue = '会場名は必須です'
@@ -126,10 +126,10 @@ export function LiveFormModal(props: LiveFormModalProps) {
         </ModalHeader>
 
         <ModalContent class="space-y-4">
-          <FormGroup label="ライブタイトル" error={errors().title} required>
+          <FormGroup label="ライブタイトル" error={errors().name} required>
             <Input
-              value={formData().title}
-              onInput={e => updateField('title', e.currentTarget.value)}
+              value={formData().name}
+              onInput={e => updateField('name', e.currentTarget.value)}
               placeholder="例: Spring Live 2024"
               disabled={props.loading}
             />

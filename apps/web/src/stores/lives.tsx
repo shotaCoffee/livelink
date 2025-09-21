@@ -56,7 +56,7 @@ export const LivesProvider: ParentComponent = props => {
         {
           id: '1',
           band_id: '550e8400-e29b-41d4-a716-446655440000',
-          title: 'サンプルライブ 1',
+          name: 'サンプルライブ 1',
           venue: 'サンプル会場',
           date: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(), // 7 days from now
           description: 'サンプルライブの説明文です。',
@@ -68,7 +68,7 @@ export const LivesProvider: ParentComponent = props => {
         {
           id: '2',
           band_id: '550e8400-e29b-41d4-a716-446655440000',
-          title: 'サンプルライブ 2',
+          name: 'サンプルライブ 2',
           venue: 'サンプル会場 2',
           date: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(), // 7 days ago
           description: '過去のライブです。',
@@ -80,7 +80,7 @@ export const LivesProvider: ParentComponent = props => {
         {
           id: '3',
           band_id: '550e8400-e29b-41d4-a716-446655440000',
-          title: 'ARUMONA 2025',
+          name: 'ARUMONA 2025',
           venue: '渋谷クラブ',
           date: new Date('2025-12-25').toISOString(),
           description: 'ARUMONAの年末ライブです。',
@@ -138,9 +138,7 @@ export const LivesProvider: ParentComponent = props => {
           ...liveData,
           is_upcoming: liveData.is_upcoming ?? true,
           share_slug:
-            liveData.title.toLowerCase().replace(/\s+/g, '-') +
-            '-' +
-            Date.now(),
+            liveData.name.toLowerCase().replace(/\s+/g, '-') + '-' + Date.now(),
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString(),
         }
@@ -157,7 +155,7 @@ export const LivesProvider: ParentComponent = props => {
         ...liveData,
         is_upcoming: liveData.is_upcoming ?? true,
         share_slug:
-          liveData.title.toLowerCase().replace(/\s+/g, '-') + '-' + Date.now(),
+          liveData.name.toLowerCase().replace(/\s+/g, '-') + '-' + Date.now(),
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
       }

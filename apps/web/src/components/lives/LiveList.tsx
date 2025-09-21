@@ -190,7 +190,7 @@ export function LiveList(props: LiveListProps) {
                 <div class="flex-1">
                   <div class="flex items-center gap-3 mb-2">
                     <h3 class="text-xl font-bold text-secondary-900">
-                      {live.title}
+                      {live.name}
                     </h3>
                     <Badge variant={live.is_upcoming ? 'primary' : 'secondary'}>
                       {live.is_upcoming ? '開催予定' : '開催済み'}

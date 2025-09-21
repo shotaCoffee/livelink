@@ -63,8 +63,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/ui
       '@solidjs/router':
-        specifier: ^0.10.5
-        version: 0.10.10(solid-js@1.9.9)
+        specifier: ^0.15.3
+        version: 0.15.3(solid-js@1.9.9)
       solid-js:
         specifier: ^1.8.11
         version: 1.9.9
@@ -145,7 +145,7 @@ importers:
         version: link:../shared
       '@solidjs/testing-library':
         specifier: ^0.8.5
-        version: 0.8.10(@solidjs/router@0.10.10(solid-js@1.9.9))(solid-js@1.9.9)
+        version: 0.8.10(@solidjs/router@0.15.3(solid-js@1.9.9))(solid-js@1.9.9)
       '@storybook/addon-essentials':
         specifier: ^8.6.14
         version: 8.6.14(@types/react@19.1.13)(storybook@8.6.14(prettier@3.6.2))
@@ -903,8 +903,8 @@ packages:
   '@rushstack/ts-command-line@4.19.1':
     resolution: {integrity: sha512-J7H768dgcpG60d7skZ5uSSwyCZs/S2HrWP1Ds8d1qYAyaaeJmpmmLr9BVw97RjFzmQPOYnoXcKA4GkqDCkduQg==}
 
-  '@solidjs/router@0.10.10':
-    resolution: {integrity: sha512-nGl7gMgsojuaupI5MAK2cFtkndmWWSAPhill/8La3IjujY3vMBamcQFymBsA2ejzxEYJjkOlEQHYgp2jNFkwuQ==}
+  '@solidjs/router@0.15.3':
+    resolution: {integrity: sha512-iEbW8UKok2Oio7o6Y4VTzLj+KFCmQPGEpm1fS3xixwFBdclFVBvaQVeibl1jys4cujfAK5Kn6+uG2uBm3lxOMw==}
     peerDependencies:
       solid-js: ^1.8.6
 
@@ -3754,16 +3754,16 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
-  '@solidjs/router@0.10.10(solid-js@1.9.9)':
+  '@solidjs/router@0.15.3(solid-js@1.9.9)':
     dependencies:
       solid-js: 1.9.9
 
-  '@solidjs/testing-library@0.8.10(@solidjs/router@0.10.10(solid-js@1.9.9))(solid-js@1.9.9)':
+  '@solidjs/testing-library@0.8.10(@solidjs/router@0.15.3(solid-js@1.9.9))(solid-js@1.9.9)':
     dependencies:
       '@testing-library/dom': 10.4.1
       solid-js: 1.9.9
     optionalDependencies:
-      '@solidjs/router': 0.10.10(solid-js@1.9.9)
+      '@solidjs/router': 0.15.3(solid-js@1.9.9)
 
   '@storybook/addon-actions@8.6.14(storybook@8.6.14(prettier@3.6.2))':
     dependencies:
