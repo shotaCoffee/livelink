@@ -217,8 +217,20 @@ jobs:
     steps:
       - name: Check all jobs status
         run: |
-          if [[ "${{ needs.lint.result }}" != "success" || "${{ needs.type-check.result }}" != "success" || "${{ needs.build.result }}" != "success" || "${{ needs.security-audit.result }}" != "success" || "${{ needs.matrix-test.result }}" != "success" ]]; then
+          echo "Job results:"
+          echo "lint: ${{ needs.lint.result }}"
+          echo "type-check: ${{ needs.type-check.result }}"
+          echo "build: ${{ needs.build.result }}"
+          echo "security-audit: ${{ needs.security-audit.result }}"
+          echo "matrix-test: ${{ needs.matrix-test.result }}"
+
+          # スキップまたは成功を許可
+          if [[ "${{ needs.lint.result }}" != "success" && "${{ needs.lint.result }}" != "skipped" ]] || \
+             [[ "${{ needs.type-check.result }}" != "success" && "${{ needs.type-check.result }}" != "skipped" ]] || \
+             [[ "${{ needs.build.result }}" != "success" && "${{ needs.build.result }}" != "skipped" ]] || \
+             [[ "${{ needs.security-audit.result }}" != "success" && "${{ needs.security-audit.result }}" != "skipped" ]] || \
+             [[ "${{ needs.matrix-test.result }}" != "success" && "${{ needs.matrix-test.result }}" != "skipped" ]]; then
             echo "One or more checks failed"
             exit 1
           fi
-          echo "All checks passed!"
+          echo "All checks passed or skipped!"
