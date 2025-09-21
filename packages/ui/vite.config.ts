@@ -26,9 +26,12 @@ export default defineConfig({
           'solid-js': 'SolidJS',
           'solid-js/web': 'SolidJSWeb',
           'solid-js/store': 'SolidJSStore'
-        }
+        },
+        assetFileNames: 'styles.css'
       }
     },
+    outDir: 'dist',
+    emptyOutDir: true,
     sourcemap: true,
     minify: false
   },
