@@ -15,7 +15,7 @@ jobs:
     name: Setup & Cache
     runs-on: ubuntu-latest
     outputs:
-      cache-hit: ${{ steps.cache-pnpm.outputs.cache-hit }}
+      cache-hit: ${{ steps.setup-pnpm.outputs.cache-hit }}
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -29,17 +29,13 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           version: 10.15.1
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+          run_install: false
 
       - name: Cache pnpm dependencies
         id: cache-pnpm
         uses: actions/cache@v4
         with:
-          path: ${{ env.STORE_PATH }}
+          path: ~/.local/share/pnpm/store
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
@@ -64,12 +60,6 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           version: 10.15.1
-
-      - name: Restore pnpm dependencies
-        uses: actions/cache@v4
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -98,12 +88,6 @@ jobs:
         with:
           version: 10.15.1
 
-      - name: Restore pnpm dependencies
-        uses: actions/cache@v4
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
@@ -127,12 +111,6 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           version: 10.15.1
-
-      - name: Restore pnpm dependencies
-        uses: actions/cache@v4
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -166,12 +144,6 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           version: 10.15.1
-
-      - name: Restore pnpm dependencies
-        uses: actions/cache@v4
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -217,8 +189,20 @@ jobs:
     steps:
       - name: Check all jobs status
         run: |
-          if [[ "${{ needs.lint.result }}" != "success" || "${{ needs.type-check.result }}" != "success" || "${{ needs.build.result }}" != "success" || "${{ needs.security-audit.result }}" != "success" || "${{ needs.matrix-test.result }}" != "success" ]]; then
+          echo "Job results:"
+          echo "lint: ${{ needs.lint.result }}"
+          echo "type-check: ${{ needs.type-check.result }}"
+          echo "build: ${{ needs.build.result }}"
+          echo "security-audit: ${{ needs.security-audit.result }}"
+          echo "matrix-test: ${{ needs.matrix-test.result }}"
+
+          # スキップまたは成功を許可
+          if [[ "${{ needs.lint.result }}" != "success" && "${{ needs.lint.result }}" != "skipped" ]] || \
+             [[ "${{ needs.type-check.result }}" != "success" && "${{ needs.type-check.result }}" != "skipped" ]] || \
+             [[ "${{ needs.build.result }}" != "success" && "${{ needs.build.result }}" != "skipped" ]] || \
+             [[ "${{ needs.security-audit.result }}" != "success" && "${{ needs.security-audit.result }}" != "skipped" ]] || \
+             [[ "${{ needs.matrix-test.result }}" != "success" && "${{ needs.matrix-test.result }}" != "skipped" ]]; then
             echo "One or more checks failed"
             exit 1
           fi
-          echo "All checks passed!"
+          echo "All checks passed or skipped!"

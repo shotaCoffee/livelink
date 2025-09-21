@@ -70,7 +70,7 @@ describe('Database Types', () => {
       expectTypeOf<Live>().toMatchTypeOf<{
         id: string
         band_id: string
-        name: string
+        title: string
         date: string
         venue: string
         is_upcoming: boolean
@@ -79,8 +79,9 @@ describe('Database Types', () => {
       }>()
     })
 
-    it('should have optional ticket_url and share_slug fields', () => {
+    it('should have optional fields', () => {
       expectTypeOf<Live>().toMatchTypeOf<{
+        description?: string
         ticket_url?: string
         share_slug?: string
       }>()
