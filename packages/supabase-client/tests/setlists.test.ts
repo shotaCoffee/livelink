@@ -1,7 +1,6 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
 import type { SetlistItem, ApiResponse } from '@band-setlist/shared'
 import type { MockedSupabaseClient } from '../vitest-env'
-import { setlistQueries } from '../src/queries/setlists'
+import { setlistQueries } from '../src'
 
 // Supabaseクライアントのモック
 vi.mock('../src/client', () => ({
@@ -59,7 +58,18 @@ describe('Setlist Queries', () => {
         await setlistQueries.getByLiveId('live1')
 
       expect(mockSupabaseClient.from).toHaveBeenCalledWith('setlist_items')
-      expect(mockSupabaseClient.select).toHaveBeenCalledWith('*')
+      expect(mockSupabaseClient.select).toHaveBeenCalledWith(`
+        *,
+        songs (
+          id,
+          title,
+          artist,
+          youtube_url,
+          spotify_url,
+          created_at,
+          updated_at
+        )
+      `)
       expect(mockSupabaseClient.eq).toHaveBeenCalledWith('live_id', 'live1')
       expect(mockSupabaseClient.order).toHaveBeenCalledWith('order_index', {
         ascending: true,
