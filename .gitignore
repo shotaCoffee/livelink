@@ -22,3 +22,5 @@ node_modules/
 
 # Negate a previously ignored pattern (e.g., ignore all .log files except important.log)
 !important.log
+*storybook.log
+storybook-static
