@@ -1,5 +1,3 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest'
-
 // Supabaseクライアントのモック
 vi.mock('@supabase/supabase-js', () => ({
   createClient: vi.fn().mockReturnValue({
@@ -72,31 +70,40 @@ describe('Supabase Client', () => {
       )
     })
 
-    it('should throw error when environment variables are missing', () => {
+    it('should use placeholder values when environment variables are missing', () => {
       delete process.env.VITE_SUPABASE_URL
       delete process.env.VITE_SUPABASE_ANON_KEY
       delete process.env.SUPABASE_URL
       delete process.env.SUPABASE_ANON_KEY
 
-      expect(() => {
-        createSupabaseClient()
-      }).toThrow('Missing Supabase environment variables')
+      const client = createSupabaseClient()
+      expect(client).toBeDefined()
+      expect(mockCreateClient).toHaveBeenCalledWith(
+        'https://placeholder.supabase.co',
+        'placeholder-anon-key'
+      )
     })
 
-    it('should throw error when URL is missing', () => {
+    it('should use placeholder URL when URL is missing', () => {
       process.env.VITE_SUPABASE_ANON_KEY = 'test-key'
 
-      expect(() => {
-        createSupabaseClient()
-      }).toThrow('Missing Supabase environment variables')
+      const client = createSupabaseClient()
+      expect(client).toBeDefined()
+      expect(mockCreateClient).toHaveBeenCalledWith(
+        'https://placeholder.supabase.co',
+        'test-key'
+      )
     })
 
-    it('should throw error when ANON_KEY is missing', () => {
+    it('should use placeholder ANON_KEY when ANON_KEY is missing', () => {
       process.env.VITE_SUPABASE_URL = 'https://test.supabase.co'
 
-      expect(() => {
-        createSupabaseClient()
-      }).toThrow('Missing Supabase environment variables')
+      const client = createSupabaseClient()
+      expect(client).toBeDefined()
+      expect(mockCreateClient).toHaveBeenCalledWith(
+        'https://test.supabase.co',
+        'placeholder-anon-key'
+      )
     })
   })
 

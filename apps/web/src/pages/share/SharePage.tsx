@@ -65,7 +65,7 @@ function SharePageContent() {
         'SharePage: Available lives:',
         lives.map(live => ({
           id: live.id,
-          title: live.title,
+          name: live.name,
           share_slug: live.share_slug,
         }))
       )
@@ -156,7 +156,7 @@ function SharePageContent() {
               {/* ヘッダー */}
               <div class="text-center mb-8">
                 <h1 class="text-4xl font-bold text-secondary-900 mb-2">
-                  {live().title}
+                  {live().name}
                 </h1>
                 <div class="flex items-center justify-center space-x-4 text-secondary-600 mb-4">
                   <div class="flex items-center space-x-2">
