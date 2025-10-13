@@ -14,7 +14,7 @@
     "clean": "rm -rf dist coverage"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.38.0",
+    "@supabase/supabase-js": "^2.75.0",
     "@band-setlist/shared": "workspace:*"
   },
   "devDependencies": {
